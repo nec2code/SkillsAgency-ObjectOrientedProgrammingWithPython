@@ -4,7 +4,7 @@ from django.utils.safestring import mark_safe
 register = template.Library()
 
 @register.simple_tag
-def render_bootstrap5():
+def render_bootstrap_5():
     """
     Inyecta los enlaces CDN de CSS, Iconos y JS de Bootstrap 5 en el template.
     """
