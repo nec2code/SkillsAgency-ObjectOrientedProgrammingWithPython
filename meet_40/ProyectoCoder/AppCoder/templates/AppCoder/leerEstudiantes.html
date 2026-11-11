@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Estudiantes</title>
+</head>
+<body>
+    <h1>Estudiantes</h1>
+    {% if estudiantes %}
+        <ul>
+        {% for estudiante in estudiantes %}
+            <li>
+                <!-- Representación por defecto (usa __str__ del modelo) -->
+                {{ estudiante }}
+                <br>
+                <!-- Campos explícitos -->
+                Nombre: {{ estudiante.nombre }}<br>
+                Apellido: {{ estudiante.apellido }}<br>
+                Email: {{ estudiante.email }}<br>
+                <div class="mt-2">
+                    <a class="btn btn-danger btn-sm" href="{% url 'eliminarEstudiante' estudiante.nombre %}" onclick="return confirm('¿Eliminar al estudiante {{ estudiante.nombre }}?');">Eliminar</a>
+                </div>
+                <hr>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay estudiantes cargados.</p>
+    {% endif %}
+    <p>
+        <a class="btn btn-primary" href="{% url 'EstudianteFormulario' %}">Crear Estudiante</a>
+    </p>
+</body>
+</html>

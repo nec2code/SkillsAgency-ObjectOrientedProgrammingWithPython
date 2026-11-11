@@ -1,0 +1,25 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario _ Editar Profesor</title>
+</head>
+<body>
+    <h1>Editar Profesor</h1>
+    <form action="{% url 'editarProfesor' profesor_nombre %}" method="POST">
+        {% csrf_token %}
+        {% if miFormulario.errors %}
+            <div class="alert alert-danger">
+                Por favor corrija los errores en el formulario.
+            </div>
+        {% endif %}
+
+        {{ miFormulario.as_p }}
+
+        <p>
+            <input class="btn btn-primary" type="submit" value="Actualizar">
+            <a class="btn btn-secondary" href="{% url 'LeerProfesores' %}">Cancelar</a>
+        </p>
+    </form>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario _ Agregar Profesor</title>
+</head>
+<body>
+    <h1>Agregar Profesor</h1>
+    <form action="{% url 'ProfesorFormulario' %}" method="POST">
+        {% csrf_token %}
+        {% if error %}
+            <p style="color: red">{{ error }}</p>
+        {% endif %}
+        <p>
+            <label>Nombre*:</label>
+            <input type="text" name="nombre" value="{{ nombre|default_if_none:'' }}">
+        </p>
+        <p>
+            <label>Apellido*:</label>
+            <input type="text" name="apellido" value="{{ apellido|default_if_none:'' }}">
+        </p>
+        <p>
+            <label>eMail*:</label>
+            <input type="email" name="email" value="{{ email|default_if_none:'' }}">
+        </p>
+        <p>
+            <label>Profesión:</label>
+            <input type="text" name="profesion" value="{{ profesion|default_if_none:'' }}">
+        </p>
+        <p>
+            <input type="submit" value="Enviar">
+        </p>
+    </form>
+</body>
+</html>

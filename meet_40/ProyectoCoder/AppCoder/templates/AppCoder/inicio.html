@@ -1,0 +1,24 @@
+{% extends "AppCoder/padre.html" %}
+{% load static %}
+{% block main %}
+    <!--Aquí va lo que cambia, y lo asociado a está vista :) -->
+    <h1>Este es el título del Inicio que cambio.... o no</h1>
+    <h3>Podes buscar una camada:</h3>
+    <form action="/AppCoder/buscar/" method="GET">
+        <input type="number" name="camada" id="camada">
+        <input type="submit" value="Buscar camada">
+    </form>
+    {% if cursos %}
+    <p>Estamos buscando el: {{camada}}</p>
+    <ul>
+	{% for curso in cursos %}
+		<li> curso: {{curso.nombre}} </li>
+		<li> camada: {{curso.camada}} </li>
+        <br>
+	{% endfor %}
+    </ul>
+    {% else %}
+        <p>No se encontraron cursos para la camada {{camada}}.</p>
+    {% endif %}
+
+{% endblock %}
