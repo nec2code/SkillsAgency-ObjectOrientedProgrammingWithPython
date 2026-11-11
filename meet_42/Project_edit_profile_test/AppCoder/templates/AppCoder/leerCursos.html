@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Cursos</title>
+</head>
+<body>
+    <h1>Cursos</h1>
+    {% if cursos %}
+        <ul>
+        {% for curso in cursos %}
+            <li>
+                <!-- Representación por defecto (usa __str__ del modelo) -->
+                {{ curso }}
+                <br>
+                <!-- Campos explícitos -->
+                Nombre: {{ curso.nombre }}<br>
+                Camada: {{ curso.camada }}<br>
+                <hr>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay cursos cargados.</p>
+    {% endif %}
+</body>
+</html>

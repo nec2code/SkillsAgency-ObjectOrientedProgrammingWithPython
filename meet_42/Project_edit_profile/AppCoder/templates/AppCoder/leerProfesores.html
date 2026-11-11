@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Profesores</title>
+</head>
+<body>
+    <h1>Profesores</h1>
+    {% if profesores %}
+        <ul>
+        {% for profesor in profesores %}
+            <li>
+                <!-- Representación por defecto (usa __str__ del modelo) -->
+                {{ profesor }}
+                <br>
+                <!-- Campos explícitos -->
+                Nombre: {{ profesor.nombre }}<br>
+                Apellido: {{ profesor.apellido }}<br>
+                Email: {{ profesor.email }}<br>
+                Profesión: {{ profesor.profesion }}<br>
+                <div class="mt-2">
+                    <a class="btn btn-secondary btn-sm" href="{% url 'editarProfesor' profesor.nombre %}">Editar</a>
+                    <a class="btn btn-danger btn-sm" href="{% url 'eliminarProfesor' profesor.nombre %}" onclick="return confirm('¿Eliminar al profesor {{ profesor.nombre }}?');">Eliminar</a>
+                </div>
+                <hr>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay profesores cargados.</p>
+    {% endif %}
+    <p>
+        <a class="btn btn-primary" href="{% url 'ProfesorFormulario' %}">Crear Profesor</a>
+    </p>
+</body>
+</html>
